@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QTabWidget {
+    background-color: #f0f0f0; /* Light gray background color */
+    border: 2px solid #a0a0a0; /* Darker gray border */
+    border-radius: 10px; /* Rounded corners for the tab widget */
+    padding: 10px; /* Padding around the tabs */
+}
+
+QTabBar::tab {
+    background-color: #d0d0d0; /* Lighter gray background for tabs */
+    border: 1px solid #a0a0a0; /* Darker border for tabs */
+    border-radius: 5px; /* Rounded corners for the tabs */
+    padding: 10px; /* Padding inside each tab */
+    margin: 2px; /* Space between tabs */
+}
+
+QTabBar::tab:selected {
+    background-color: #ffffff; /* White background for selected tab */
+    color: #000000; /* Black text color for selected tab */
+}
+
+QTabBar::tab:hover {
+    background-color: #e0e0e0; /* Slightly darker gray on hover */
+}
+
+QTabBar::tab:!selected {
+    background-color: #c0c0c0; /* Gray background for unselected tabs */
+    color: #606060; /* Darker text color for unselected tabs */
+}
+
+QTabWidget::pane {
+    border-top: 2px solid #a0a0a0; /* Border between the tabs and content */
+    background-color: #ffffff; /* Background color of the content area */
+    border-radius: 10px; /* Rounded corners for the content area */
+    padding: 10px; /* Padding inside the content area */
+}
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabWidget {
+    background-color: #f0f0f0;
+    border: 2px solid #a0a0a0;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QTabBar::tab {
+    background-color: #d0d0d0;
+    border: 1px solid #a0a0a0;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 2px;
+}
+
+QTabBar::tab:selected {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+QTabBar::tab:hover {
+    background-color: #e0e0e0;
+}
+
+QTabBar::tab:!selected {
+    background-color: #c0c0c0;
+    color: #606060;
+}
+
+QTabWidget::pane {
+    border-top: 2px solid #a0a0a0;
+    background-color: #3498db;
+    border-radius: 10px;
+    padding: 10px;
+}
+</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="currencyConverter">
+     <attribute name="title">
+      <string>Currency Converter</string>
+     </attribute>
+     <widget class="QPushButton" name="convertButton">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>360</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #d0d0d0;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid #a0a0a0; 
+    font-size: 14px; 
+    font-weight: bold;/
+}
+
+QPushButton:hover {
+    background-color: #b0b0b0
+    border: 1px solid #8a8a8a; 
+}
+
+QPushButton:pressed {
+    background-color: #a0a0a0;  */
+    border: 1px solid #707070; 
+}
+
+QPushButton:focus {
+    outline: none; 
+    box-shadow: 0 0 5px #3498db;
+}
+
+QPushButton:selected {
+    background-color: rgb(170, 255, 255); 
+    color: black; /
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Convert</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>110</y>
+        <width>131</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLineEdit" name="amountLineEdit"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="resultLineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>110</y>
+        <width>131</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QComboBox" name="fromCurrencyComboBox"/>
+       </item>
+       <item>
+        <widget class="QComboBox" name="toCurrencyComboBox"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="toDoList">
+     <attribute name="title">
+      <string>To-Do-List</string>
+     </attribute>
+     <widget class="QListWidget" name="taskListWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>80</y>
+        <width>411</width>
+        <height>381</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="taskLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>220</y>
+        <width>113</width>
+        <height>24</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="addTaskButton">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>430</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="removeTaskButton">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>430</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Remove</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="passwords">
+     <attribute name="title">
+      <string>Passwords</string>
+     </attribute>
+     <widget class="QLineEdit" name="usernameLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>180</y>
+        <width>113</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Username</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="passwordLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>240</y>
+        <width>113</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Password</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="websiteLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>130</y>
+        <width>113</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Website</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="addPasswordButton">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>300</y>
+        <width>91</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add Password</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="viewPasswordsButton">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>300</y>
+        <width>101</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>View Passwords</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="removePasswordButton">
+      <property name="geometry">
+       <rect>
+        <x>189</x>
+        <y>300</y>
+        <width>101</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete Passwords</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="passwordTableWidget">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>90</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="weatherForecast">
+     <attribute name="title">
+      <string>WeatherForecast</string>
+     </attribute>
+     <widget class="QLineEdit" name="cityLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>20</y>
+        <width>251</width>
+        <height>24</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="getWeatherButton">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>20</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Get Weather</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>20</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enter City Name: </string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>200</y>
+        <width>251</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0">
+        <widget class="QLabel" name="windInfoLabel_2">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="temperatureInfoLabel">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="humidityInfoLabel_3">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="iconInfoLabel_4">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

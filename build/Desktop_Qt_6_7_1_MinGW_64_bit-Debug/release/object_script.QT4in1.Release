@@ -1,0 +1,11 @@
+release/currencyconverter.o
+release/main.o
+release/mainwindow.o
+release/notetaking.o
+release/passwordmanager.o
+release/weatherforecast.o
+release/moc_currencyconverter.o
+release/moc_mainwindow.o
+release/moc_notetaking.o
+release/moc_passwordmanager.o
+release/moc_weatherforecast.o
