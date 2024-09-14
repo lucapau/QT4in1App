@@ -101,7 +101,7 @@ QTabWidget::pane {
 </string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="currencyConverter">
      <attribute name="title">
@@ -309,7 +309,7 @@ QPushButton:selected {
        <string>View Passwords</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="deletePasswordButton">
+     <widget class="QPushButton" name="removePasswordButton">
       <property name="geometry">
        <rect>
         <x>189</x>
@@ -357,21 +357,61 @@ QPushButton:selected {
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Get Weather</string>
       </property>
      </widget>
-     <widget class="QLabel" name="weatherInfoLabel">
+     <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>200</y>
-        <width>251</width>
-        <height>191</height>
+        <x>140</x>
+        <y>20</y>
+        <width>101</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Enter City Name: </string>
       </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>200</y>
+        <width>251</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0">
+        <widget class="QLabel" name="windInfoLabel_2">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="temperatureInfoLabel">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="humidityInfoLabel_3">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="iconInfoLabel_4">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>

@@ -4,12 +4,11 @@
 #include <QMainWindow>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QCryptographicHash>
-#include <QFile>
-#include <QTextStream>
-#include <QMessageBox>
 #include <QTableWidgetItem>
-#include <openssl/aes.h> // Ensure you have OpenSSL headers if used
+#include "currencyconverter.h"
+#include "weatherforecast.h"
+#include "passwordmanager.h"
+#include "notetaking.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,42 +23,27 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_convertButton_clicked();
-    void on_addTaskButton_clicked();
-    void on_removeTaskButton_clicked();
     void on_getWeatherButton_clicked();
+    void on_convertButton_clicked();
     void on_addPasswordButton_clicked();
-    void on_deletePasswordButton_clicked();
+    void on_removeTaskButton_clicked();
+    void on_addTaskButton_clicked();
     void onNetworkReply(QNetworkReply *reply);
-    void on_viewPasswordsButton_clicked();
+    void onWeatherDataReady(const QString &temperature, const QString &description);
+    void onWeatherDataFailed(const QString &errorString);
+    void on_removePasswordButton_clicked();
 
 private:
-    void fetchExchangeRates();
-    void fetchWeatherData(const QString &lat, const QString &lon);
-    void fetchCoordinates(const QString &cityName);
-    void loadPasswords();
-    void savePasswords();
-    void addPassword(const QString &website, const QString &username, const QString &password);
-    bool appendToStorageFile(const QString &website, const QString &username, const QString &encryptedPassword);
-    bool deletePassword(const QString &website, const QString &username);
-    QString encryptPassword(const QString &password);
-    QString decryptPassword(const QString &encryptedPassword);
-    QString applyPadding(const QString &plaintext);
-    QString removePadding(const QString &decryptedText);
-
-    QByteArray aesEncrypt(const QString &plaintext, const QByteArray &key);
-    QString aesDecrypt(const QByteArray &encrypted, const QByteArray &key);
-
     Ui::MainWindow *ui;
     QNetworkAccessManager *networkManager;
+    CurrencyConverter *currencyConverter;
+    WeatherForecast *weatherForecast;
+    PasswordManager *passwordManager;
+    NoteTaking *noteTaking;
 
-    double eurRate;
-    double gbpRate;
-    double jpyRate;
-    double audRate;
-    double cadRate;
-
-
-    QString storageFile;
+    void initializeComponents();
+    void setupConnections();
+    void fetchExchangeRates();
 };
+
 #endif // MAINWINDOW_H
