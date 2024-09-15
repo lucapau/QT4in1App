@@ -35,6 +35,16 @@ This Qt application combines multiple useful tools into one cohesive app, showca
    
    ![Weather Forecast](weatherforecast.PNG)
 
+## Running the Executable
+
+To run the executable for this Qt application, follow these steps:
+
+1. **Download and Extract**: Download the entire project zip file and extract it to a desired location on your computer.
+
+2. **Navigate to Executable Directory**: Open File Explorer and navigate to the following directory:
+
+3. **Run the Executable**: In the `debug` folder, you will find the executable file for the application. Double-click the executable to run the application.
+
 ## Technologies Used
 - **C++**: Core logic of the application.
 - **Qt Framework**: Used for the user interface and functionality.
