@@ -160,24 +160,20 @@ void MainWindow::onWeatherDataReady(const QString &temperature, const QString &w
 
     QString iconPath;
     if (weatherCode == "1000" || weatherCode == "10001") {
-        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/sun.png";
-    } else if (weatherCode == "1100" || weatherCode == "11001" || weatherCode == "1101" || weatherCode == "11011" || weatherCode == "1102" || weatherCode == "11021") {
-        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/partly_cloudy.png";
-    } else if (weatherCode == "1001") {
-        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/cloudy.png";
-    } else if (weatherCode == "4000" || weatherCode == "4200" || weatherCode == "4001" || weatherCode == "4201") {
-        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/rain-cloud.png";
-    } else if (weatherCode == "8000") {
-        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/storm.png";
-    } else if (weatherCode == "2100" || weatherCode == "2000") {
-        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/fog.png";
-    } else {
-        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/default.png";
+        iconPath = "C:/Users/lucap/Documents/GitHub/QT4in1App/icons/sun.png";
+    } else if (weatherCode == "1100" || weatherCode == "11001" || weatherCode == "1101" || weatherCode == "11011" || weatherCode == "1102" || weatherCode == "11021") { //partly cloudy
+        iconPath = "C:/Users/lucap/Documents/GitHub/QT4in1App/icons/partly_cloudy.png";
+    } else if (weatherCode == "1001") { //cloudy
+        iconPath = "C:/Users/lucap/Documents/GitHub/QT4in1App/icons/cloudy.png";
+    } else if (weatherCode == "4000" || weatherCode == "4200" || weatherCode == "4001" || weatherCode == "4201") { // rain
+        iconPath = "C:/Users/lucap/Documents/GitHub/QT4in1App/icons/rain-cloud.png";
+    } else if (weatherCode == "8000") { // storm
+        iconPath = "C:/Users/lucap/Documents/GitHub/QT4in1App/icons/storm.png";
+    } else if (weatherCode == "2100" || weatherCode == "2000") { // fog
+        iconPath = "C:/Users/lucap/Documents/GitHub/QT4in1App/icons/fog.png";
+    } else { // default
+        iconPath = "C:/Users/lucap/Documents/GitHub/QT4in1App/icons/default.png";
     }
-
-
-
-
 
     qDebug() << "Icon path: " << iconPath;
     ui->iconInfoLabel_4->setScaledContents(true);
