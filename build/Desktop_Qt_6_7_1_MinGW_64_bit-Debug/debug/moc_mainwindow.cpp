@@ -48,6 +48,8 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "reply",
     "onWeatherDataReady",
     "temperature",
+    "windSpeed",
+    "humidity",
     "description",
     "onWeatherDataFailed",
     "errorString",
@@ -78,9 +80,9 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        5,    0,   71,    2, 0x08,    4 /* Private */,
        6,    0,   72,    2, 0x08,    5 /* Private */,
        7,    1,   73,    2, 0x08,    6 /* Private */,
-      10,    2,   76,    2, 0x08,    8 /* Private */,
-      13,    1,   81,    2, 0x08,   11 /* Private */,
-      15,    0,   84,    2, 0x08,   13 /* Private */,
+      10,    4,   76,    2, 0x08,    8 /* Private */,
+      15,    1,   85,    2, 0x08,   13 /* Private */,
+      17,    0,   88,    2, 0x08,   15 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -89,8 +91,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 8,    9,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   11,   12,
-    QMetaType::Void, QMetaType::QString,   14,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,   11,   12,   13,   14,
+    QMetaType::Void, QMetaType::QString,   16,
     QMetaType::Void,
 
        0        // eod
@@ -122,6 +124,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'onWeatherDataFailed'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
@@ -143,7 +147,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_removeTaskButton_clicked(); break;
         case 4: _t->on_addTaskButton_clicked(); break;
         case 5: _t->onNetworkReply((*reinterpret_cast< std::add_pointer_t<QNetworkReply*>>(_a[1]))); break;
-        case 6: _t->onWeatherDataReady((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 6: _t->onWeatherDataReady((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
         case 7: _t->onWeatherDataFailed((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 8: _t->on_removePasswordButton_clicked(); break;
         default: ;

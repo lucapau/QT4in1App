@@ -15,7 +15,7 @@ public:
     void fetchWeatherData(const QString &lat, const QString &lon);
 
 signals:
-    void weatherDataReady(const QString &temperature, const QString &description);
+    void weatherDataReady(const QString &temperature, const QString &windSpeed, const QString &humidity, const QString &description);
     void weatherDataFailed(const QString &errorString);
 
 private slots:

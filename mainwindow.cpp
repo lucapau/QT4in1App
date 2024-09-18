@@ -133,22 +133,6 @@ void MainWindow::onNetworkReply(QNetworkReply *reply) {
             }
         }
     } else if (reply->url().toString().contains("tomorrow")) {
-        // Weather response
-        if (jsonObj.contains("data")) {
-            QJsonObject data = jsonObj["data"].toObject();
-            QJsonArray timelines = data["timelines"].toArray();
-            if (!timelines.isEmpty()) {
-                QJsonObject timeline = timelines[0].toObject();
-                QJsonArray intervals = timeline["intervals"].toArray();
-                if (!intervals.isEmpty()) {
-                    QJsonObject interval = intervals[0].toObject();
-                    QJsonObject values = interval["values"].toObject();
-                    double temperature = values["temperature"].toDouble();
-                    QString weatherText = QString("Temperature: %1 °C").arg(temperature);
-                    ui->temperatureInfoLabel->setText(weatherText);
-                }
-            }
-        }
     } else if (reply->url().toString().contains("exchangerate-api")) {
         // Currency exchange response
         QJsonObject rates = jsonObj["conversion_rates"].toObject();
@@ -169,12 +153,47 @@ void MainWindow::onNetworkReply(QNetworkReply *reply) {
     reply->deleteLater();
 }
 
-void MainWindow::onWeatherDataReady(const QString &temperature, const QString &description) {
-    ui->temperatureInfoLabel->setText(description); // Display the weather description
+void MainWindow::onWeatherDataReady(const QString &temperature, const QString &windSpeed, const QString &humidity, const QString &weatherCode) {
+    ui->temperatureInfoLabel->setText(temperature);
+    ui->windInfoLabel_2->setText(windSpeed);
+    ui->humidityInfoLabel_3->setText(humidity);
+
+    QString iconPath;
+    if (weatherCode == "1000" || weatherCode == "10001") {
+        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/sun.png";
+    } else if (weatherCode == "1100" || weatherCode == "11001" || weatherCode == "1101" || weatherCode == "11011" || weatherCode == "1102" || weatherCode == "11021") {
+        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/partly_cloudy.png";
+    } else if (weatherCode == "1001") {
+        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/cloudy.png";
+    } else if (weatherCode == "4000" || weatherCode == "4200" || weatherCode == "4001" || weatherCode == "4201") {
+        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/rain-cloud.png";
+    } else if (weatherCode == "8000") {
+        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/storm.png";
+    } else if (weatherCode == "2100" || weatherCode == "2000") {
+        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/fog.png";
+    } else {
+        iconPath = "C:/Users/lucap/Desktop/Summer Revision/Projects/QT/QT4in1/icons/default.png";
+    }
+
+
+
+
+
+    qDebug() << "Icon path: " << iconPath;
+    ui->iconInfoLabel_4->setScaledContents(true);
+
+    QPixmap pixmap(iconPath);
+    if (pixmap.isNull()) {
+        qDebug() << "Failed to load the pixmap from" << iconPath;
+    } else {
+        ui->iconInfoLabel_4->setPixmap(pixmap);
+    }
 }
 
+
+
 void MainWindow::onWeatherDataFailed(const QString &errorString) {
-    ui->temperatureInfoLabel->setText("Error: " + errorString); // Display the error message
+    ui->temperatureInfoLabel->setText("Error: " + errorString);
 }
 
 void MainWindow::on_removePasswordButton_clicked() {

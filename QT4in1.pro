@@ -36,3 +36,6 @@ LIBS += -L"C:/Program Files/OpenSSL-Win64/lib/VC/x64/MDd" -lssl -lcrypto
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc
