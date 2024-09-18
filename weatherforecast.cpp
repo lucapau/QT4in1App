@@ -1,4 +1,5 @@
 #include "weatherforecast.h"
+#include "qpixmap.h"
 #include <QNetworkRequest>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -33,8 +34,8 @@ void WeatherForecast::fetchCoordinates(const QString &cityName)
 
 void WeatherForecast::fetchWeatherData(const QString &lat, const QString &lon)
 {
-    QString apiKey = "hyN6NgYkuuUPuD03Nm2gxFRIokmHj0Ut"; // Weather API key
-    QString apiUrl = QString("https://api.tomorrow.io/v4/timelines?location=%1,%2&fields=temperature&units=metric&timesteps=current&apikey=%3")
+    QString apiKey = "TfNxwJddFVX13NkBah8XINiwlL6XL0jO"; // Weather API key
+    QString apiUrl = QString("https://api.tomorrow.io/v4/timelines?location=%1,%2&fields=temperature,humidity,windSpeed,weatherCode&units=metric&timesteps=current&apikey=%3")
                          .arg(lat, lon, apiKey);
 
     QNetworkRequest request((QUrl(apiUrl)));
@@ -84,6 +85,8 @@ void WeatherForecast::handleWeatherReply(QNetworkReply *reply)
     QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData);
     QJsonObject jsonObj = jsonDoc.object();
 
+    qDebug() << "API response:" << jsonDoc.toJson(QJsonDocument::Indented);
+
     if (jsonObj.contains("data")) {
         QJsonObject data = jsonObj["data"].toObject();
         QJsonArray timelines = data["timelines"].toArray();
@@ -93,10 +96,56 @@ void WeatherForecast::handleWeatherReply(QNetworkReply *reply)
             if (!intervals.isEmpty()) {
                 QJsonObject interval = intervals[0].toObject();
                 QJsonObject values = interval["values"].toObject();
-                double temperature = values["temperature"].toDouble();
-                QString weatherText = QString("Temperature: %1 °C").arg(temperature);
 
-                emit weatherDataReady(QString::number(temperature), weatherText);
+                double temperature = values["temperature"].toDouble();
+                double humidity = values["humidity"].toDouble();
+                double windSpeed = values["windSpeed"].toDouble();
+                int weatherCode = values["weatherCode"].toInt(); // Use int for weatherCode
+
+                qDebug() << "Raw weatherCode description:" << weatherCode;
+
+                QString iconPath;
+                switch (weatherCode) {
+                case 1000:
+                case 10001:
+                    iconPath = ":/icons/sun.png";
+                    break;
+                case 1100:
+                case 11001:
+                case 1101:
+                case 11011:
+                case 1102:
+                case 11021:
+                    iconPath = ":/icons/partly_cloudy.png";
+                    break;
+                case 1001:
+                    iconPath = ":/icons/cloudy.png";
+                    break;
+                case 4000:
+                case 4200:
+                case 4001:
+                case 4201:
+                    iconPath = ":/icons/rain-cloud.png";
+                    break;
+                case 8000:
+                    iconPath = ":/icons/storm.png";
+                    break;
+                case 2100:
+                case 2000:
+                    iconPath = ":/icons/fog.png";
+                    break;
+                default:
+                    iconPath = ":/icons/default.png";
+                    break;
+                }
+
+                qDebug() << "Icon path: " << iconPath;
+
+                QString temperatureText = QString("Temperature: %1 °C").arg(temperature);
+                QString humidityText = QString("Humidity: %1%").arg(humidity);
+                QString windSpeedText = QString("Wind Speed: %1 m/s").arg(windSpeed);
+
+                emit weatherDataReady(temperatureText, windSpeedText, humidityText, QString::number(weatherCode));
             } else {
                 emit weatherDataFailed("No intervals in weather data.");
             }
@@ -109,3 +158,6 @@ void WeatherForecast::handleWeatherReply(QNetworkReply *reply)
 
     reply->deleteLater();
 }
+
+
+
