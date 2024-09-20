@@ -40,6 +40,8 @@ constexpr auto qt_meta_stringdata_CLASSWeatherForecastENDCLASS = QtMocHelpers::s
     "weatherDataReady",
     "",
     "temperature",
+    "windSpeed",
+    "humidity",
     "description",
     "weatherDataFailed",
     "errorString",
@@ -67,20 +69,20 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSWeatherForecastENDCLASS[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   38,    2, 0x06,    1 /* Public */,
-       5,    1,   43,    2, 0x06,    4 /* Public */,
+       1,    4,   38,    2, 0x06,    1 /* Public */,
+       7,    1,   47,    2, 0x06,    6 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       7,    1,   46,    2, 0x08,    6 /* Private */,
-      10,    1,   49,    2, 0x08,    8 /* Private */,
+       9,    1,   50,    2, 0x08,    8 /* Private */,
+      12,    1,   53,    2, 0x08,   10 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
-    QMetaType::Void, QMetaType::QString,    6,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,    3,    4,    5,    6,
+    QMetaType::Void, QMetaType::QString,    8,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 8,    9,
-    QMetaType::Void, 0x80000000 | 8,    9,
+    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, 0x80000000 | 10,   11,
 
        0        // eod
 };
@@ -96,6 +98,8 @@ Q_CONSTINIT const QMetaObject WeatherForecast::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<WeatherForecast, std::true_type>,
         // method 'weatherDataReady'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'weatherDataFailed'
@@ -117,7 +121,7 @@ void WeatherForecast::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         auto *_t = static_cast<WeatherForecast *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->weatherDataReady((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 0: _t->weatherDataReady((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
         case 1: _t->weatherDataFailed((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 2: _t->handleWeatherReply((*reinterpret_cast< std::add_pointer_t<QNetworkReply*>>(_a[1]))); break;
         case 3: _t->handleCoordinateReply((*reinterpret_cast< std::add_pointer_t<QNetworkReply*>>(_a[1]))); break;
@@ -144,7 +148,7 @@ void WeatherForecast::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (WeatherForecast::*)(const QString & , const QString & );
+            using _t = void (WeatherForecast::*)(const QString & , const QString & , const QString & , const QString & );
             if (_t _q_method = &WeatherForecast::weatherDataReady; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -191,9 +195,9 @@ int WeatherForecast::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void WeatherForecast::weatherDataReady(const QString & _t1, const QString & _t2)
+void WeatherForecast::weatherDataReady(const QString & _t1, const QString & _t2, const QString & _t3, const QString & _t4)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 

@@ -61,9 +61,14 @@ public:
     QLabel *label;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
+    QLabel *humidityInfoLabel_3;
     QLabel *windInfoLabel_2;
     QLabel *temperatureInfoLabel;
-    QLabel *humidityInfoLabel_3;
+    QWidget *gridLayoutWidget_2;
+    QGridLayout *gridLayout_3;
+    QLabel *windInfoLabel_4;
+    QLabel *humidityInfoLabel_5;
+    QLabel *temperatureInfoLabel_3;
     QLabel *iconInfoLabel_4;
     QMenuBar *menubar;
 
@@ -271,30 +276,49 @@ public:
         label->setGeometry(QRect(140, 20, 101, 16));
         gridLayoutWidget = new QWidget(weatherForecast);
         gridLayoutWidget->setObjectName("gridLayoutWidget");
-        gridLayoutWidget->setGeometry(QRect(240, 200, 251, 171));
+        gridLayoutWidget->setGeometry(QRect(340, 100, 251, 191));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
+        humidityInfoLabel_3 = new QLabel(gridLayoutWidget);
+        humidityInfoLabel_3->setObjectName("humidityInfoLabel_3");
+
+        gridLayout->addWidget(humidityInfoLabel_3, 1, 0, 1, 1);
+
         windInfoLabel_2 = new QLabel(gridLayoutWidget);
         windInfoLabel_2->setObjectName("windInfoLabel_2");
 
-        gridLayout->addWidget(windInfoLabel_2, 3, 0, 1, 1);
+        gridLayout->addWidget(windInfoLabel_2, 2, 0, 1, 1);
 
         temperatureInfoLabel = new QLabel(gridLayoutWidget);
         temperatureInfoLabel->setObjectName("temperatureInfoLabel");
 
         gridLayout->addWidget(temperatureInfoLabel, 0, 0, 1, 1);
 
-        humidityInfoLabel_3 = new QLabel(gridLayoutWidget);
-        humidityInfoLabel_3->setObjectName("humidityInfoLabel_3");
+        gridLayoutWidget_2 = new QWidget(weatherForecast);
+        gridLayoutWidget_2->setObjectName("gridLayoutWidget_2");
+        gridLayoutWidget_2->setGeometry(QRect(200, 100, 91, 191));
+        gridLayout_3 = new QGridLayout(gridLayoutWidget_2);
+        gridLayout_3->setObjectName("gridLayout_3");
+        gridLayout_3->setContentsMargins(0, 0, 0, 0);
+        windInfoLabel_4 = new QLabel(gridLayoutWidget_2);
+        windInfoLabel_4->setObjectName("windInfoLabel_4");
 
-        gridLayout->addWidget(humidityInfoLabel_3, 1, 0, 1, 1);
+        gridLayout_3->addWidget(windInfoLabel_4, 2, 0, 1, 1);
 
-        iconInfoLabel_4 = new QLabel(gridLayoutWidget);
+        humidityInfoLabel_5 = new QLabel(gridLayoutWidget_2);
+        humidityInfoLabel_5->setObjectName("humidityInfoLabel_5");
+
+        gridLayout_3->addWidget(humidityInfoLabel_5, 1, 0, 1, 1);
+
+        temperatureInfoLabel_3 = new QLabel(gridLayoutWidget_2);
+        temperatureInfoLabel_3->setObjectName("temperatureInfoLabel_3");
+
+        gridLayout_3->addWidget(temperatureInfoLabel_3, 0, 0, 1, 1);
+
+        iconInfoLabel_4 = new QLabel(weatherForecast);
         iconInfoLabel_4->setObjectName("iconInfoLabel_4");
-
-        gridLayout->addWidget(iconInfoLabel_4, 2, 0, 1, 1);
-
+        iconInfoLabel_4->setGeometry(QRect(320, 320, 111, 81));
         tabWidget->addTab(weatherForecast, QString());
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -304,7 +328,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -327,10 +351,13 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(passwords), QCoreApplication::translate("MainWindow", "Passwords", nullptr));
         getWeatherButton->setText(QCoreApplication::translate("MainWindow", "Get Weather", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Enter City Name: ", nullptr));
-        windInfoLabel_2->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        temperatureInfoLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        humidityInfoLabel_3->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        iconInfoLabel_4->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        humidityInfoLabel_3->setText(QString());
+        windInfoLabel_2->setText(QString());
+        temperatureInfoLabel->setText(QString());
+        windInfoLabel_4->setText(QCoreApplication::translate("MainWindow", "Wind:", nullptr));
+        humidityInfoLabel_5->setText(QCoreApplication::translate("MainWindow", "Humidity:", nullptr));
+        temperatureInfoLabel_3->setText(QCoreApplication::translate("MainWindow", "Temperature: ", nullptr));
+        iconInfoLabel_4->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(weatherForecast), QCoreApplication::translate("MainWindow", "WeatherForecast", nullptr));
     } // retranslateUi
 
