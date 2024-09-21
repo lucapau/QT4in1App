@@ -261,7 +261,7 @@ public:
         removePasswordButton->setGeometry(QRect(189, 300, 101, 24));
         passwordTableWidget = new QTableWidget(passwords);
         passwordTableWidget->setObjectName("passwordTableWidget");
-        passwordTableWidget->setGeometry(QRect(470, 90, 256, 192));
+        passwordTableWidget->setGeometry(QRect(430, 90, 331, 192));
         tabWidget->addTab(passwords, QString());
         weatherForecast = new QWidget();
         weatherForecast->setObjectName("weatherForecast");
@@ -328,7 +328,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
