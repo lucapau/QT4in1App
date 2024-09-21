@@ -101,7 +101,7 @@ QTabWidget::pane {
 </string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="currencyConverter">
      <attribute name="title">
@@ -325,9 +325,9 @@ QPushButton:selected {
      <widget class="QTableWidget" name="passwordTableWidget">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>430</x>
         <y>90</y>
-        <width>256</width>
+        <width>331</width>
         <height>192</height>
        </rect>
       </property>

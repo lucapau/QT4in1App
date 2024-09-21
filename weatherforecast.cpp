@@ -1,5 +1,4 @@
 #include "weatherforecast.h"
-#include "qpixmap.h"
 #include <QNetworkRequest>
 #include <QJsonDocument>
 #include <QJsonObject>

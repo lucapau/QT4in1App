@@ -6,11 +6,13 @@
 #include <QList>
 #include <QFile>
 #include <QCryptographicHash>
+#include <QByteArray>
 
 struct PasswordEntry {
     QString website;
     QString username;
     QString encryptedPassword;
+    QString password; // Added for decrypted password
 };
 
 class PasswordManager : public QObject
@@ -25,10 +27,13 @@ public:
 
 private:
     QString storageFilePath = "passwords.dat";
+    QByteArray m_encryptionKey;
+
     QList<PasswordEntry> loadPasswords() const;
     bool savePasswords(const QList<PasswordEntry> &passwords) const;
     QString encryptPassword(const QString &password) const;
     QString decryptPassword(const QString &encryptedPassword) const;
+    void loadEncryptionKey();
 };
 
 #endif // PASSWORDMANAGER_H

@@ -72,33 +72,6 @@ void MainWindow::on_convertButton_clicked() {
     currencyConverter->convert(fromCurrency, toCurrency, amount);
 }
 
-void MainWindow::on_addPasswordButton_clicked() {
-    QString website = ui->websiteLineEdit->text();
-    QString username = ui->usernameLineEdit->text();
-    QString password = ui->passwordLineEdit->text();
-
-    if (!website.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
-        if (passwordManager->addPassword(website, username, password)) {
-            QMessageBox::information(this, "Success", "Password added successfully!");
-            ui->websiteLineEdit->clear();
-            ui->usernameLineEdit->clear();
-            ui->passwordLineEdit->clear();
-            // Refresh password table
-            ui->passwordTableWidget->setRowCount(0);
-            for (const PasswordEntry &entry : passwordManager->viewPasswords()) {
-                int row = ui->passwordTableWidget->rowCount();
-                ui->passwordTableWidget->insertRow(row);
-                ui->passwordTableWidget->setItem(row, 0, new QTableWidgetItem(entry.website));
-                ui->passwordTableWidget->setItem(row, 1, new QTableWidgetItem(entry.username));
-                ui->passwordTableWidget->setItem(row, 2, new QTableWidgetItem("********"));
-            }
-        } else {
-            QMessageBox::warning(this, "Error", "Failed to add password.");
-        }
-    } else {
-        QMessageBox::warning(this, "Input Error", "All fields must be filled out.");
-    }
-}
 
 void MainWindow::on_removeTaskButton_clicked() {
     QListWidgetItem *item = ui->taskListWidget->currentItem();
@@ -195,7 +168,46 @@ void MainWindow::onWeatherDataFailed(const QString &errorString) {
     ui->temperatureInfoLabel->setText("Error: " + errorString);
 }
 
-void MainWindow::on_removePasswordButton_clicked() {
+void MainWindow::on_addPasswordButton_clicked()
+{
+    QString website = ui->websiteLineEdit->text();
+    QString username = ui->usernameLineEdit->text();
+    QString password = ui->passwordLineEdit->text();
+
+    if (!website.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
+        if (passwordManager->addPassword(website, username, password)) {
+            QMessageBox::information(this, "Success", "Password added successfully!");
+            ui->websiteLineEdit->clear();
+            ui->usernameLineEdit->clear();
+            ui->passwordLineEdit->clear();
+            refreshPasswordTable(false);
+        } else {
+            QMessageBox::warning(this, "Error", "Failed to add password.");
+        }
+    } else {
+        QMessageBox::warning(this, "Input Error", "All fields must be filled out.");
+    }
+}
+
+void MainWindow::refreshPasswordTable(bool showPasswords)
+{
+    ui->passwordTableWidget->setRowCount(0);
+    for (const PasswordEntry &entry : passwordManager->viewPasswords()) {
+        int row = ui->passwordTableWidget->rowCount();
+        ui->passwordTableWidget->insertRow(row);
+        ui->passwordTableWidget->setItem(row, 0, new QTableWidgetItem(entry.website));
+        ui->passwordTableWidget->setItem(row, 1, new QTableWidgetItem(entry.username));
+
+        if (showPasswords) {
+            ui->passwordTableWidget->setItem(row, 2, new QTableWidgetItem(entry.password));
+        } else {
+            ui->passwordTableWidget->setItem(row, 2, new QTableWidgetItem(QString(entry.password.length(), '*')));
+        }
+    }
+}
+
+void MainWindow::on_removePasswordButton_clicked()
+{
     int currentRow = ui->passwordTableWidget->currentRow();
     if (currentRow >= 0) {
         QString website = ui->passwordTableWidget->item(currentRow, 0)->text();
@@ -203,11 +215,25 @@ void MainWindow::on_removePasswordButton_clicked() {
 
         if (passwordManager->deletePassword(website, username)) {
             QMessageBox::information(this, "Success", "Password removed successfully!");
-            ui->passwordTableWidget->removeRow(currentRow);
+            refreshPasswordTable();
         } else {
             QMessageBox::warning(this, "Error", "Failed to remove password.");
         }
     } else {
         QMessageBox::warning(this, "Error", "No password selected.");
+    }
+}
+
+void MainWindow::on_viewPasswordsButton_clicked()
+{
+    static bool passwordsVisible = false;
+    passwordsVisible = !passwordsVisible;
+
+    refreshPasswordTable(passwordsVisible);
+
+    if (passwordsVisible) {
+        ui->viewPasswordsButton->setText("Hide Passwords");
+    } else {
+        ui->viewPasswordsButton->setText("View Passwords");
     }
 }

@@ -25,13 +25,15 @@ public:
 private slots:
     void on_getWeatherButton_clicked();
     void on_convertButton_clicked();
-    void on_addPasswordButton_clicked();
     void on_removeTaskButton_clicked();
     void on_addTaskButton_clicked();
     void onNetworkReply(QNetworkReply *reply);
     void onWeatherDataReady(const QString &temperature, const QString &windSpeed, const QString &humidity, const QString &description);
     void onWeatherDataFailed(const QString &errorString);
+    void on_addPasswordButton_clicked();
     void on_removePasswordButton_clicked();
+    void on_viewPasswordsButton_clicked();
+    void refreshPasswordTable(bool showPasswords = false);
 
 private:
     Ui::MainWindow *ui;
