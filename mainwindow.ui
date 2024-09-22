@@ -101,7 +101,7 @@ QTabWidget::pane {
 </string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="currencyConverter">
      <attribute name="title">
@@ -110,8 +110,8 @@ QTabWidget::pane {
      <widget class="QPushButton" name="convertButton">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>360</y>
+        <x>210</x>
+        <y>330</y>
         <width>80</width>
         <height>24</height>
        </rect>
@@ -155,7 +155,7 @@ QPushButton:selected {
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>180</x>
         <y>110</y>
         <width>131</width>
         <height>221</height>
@@ -173,7 +173,7 @@ QPushButton:selected {
      <widget class="QWidget" name="verticalLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>350</x>
         <y>110</y>
         <width>131</width>
         <height>221</height>
@@ -187,6 +187,19 @@ QPushButton:selected {
         <widget class="QComboBox" name="toCurrencyComboBox"/>
        </item>
       </layout>
+     </widget>
+     <widget class="QPushButton" name="swapCurrenciesButton">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>210</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>⇄</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="toDoList">

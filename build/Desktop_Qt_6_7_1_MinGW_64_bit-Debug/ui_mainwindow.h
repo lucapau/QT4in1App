@@ -42,6 +42,7 @@ public:
     QVBoxLayout *verticalLayout_2;
     QComboBox *fromCurrencyComboBox;
     QComboBox *toCurrencyComboBox;
+    QPushButton *swapCurrenciesButton;
     QWidget *toDoList;
     QListWidget *taskListWidget;
     QLineEdit *taskLineEdit;
@@ -160,7 +161,7 @@ public:
         currencyConverter->setObjectName("currencyConverter");
         convertButton = new QPushButton(currencyConverter);
         convertButton->setObjectName("convertButton");
-        convertButton->setGeometry(QRect(230, 360, 80, 24));
+        convertButton->setGeometry(QRect(210, 330, 80, 24));
         convertButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #d0d0d0;\n"
 "    color: white;\n"
@@ -193,7 +194,7 @@ public:
 ""));
         verticalLayoutWidget = new QWidget(currencyConverter);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(70, 110, 131, 221));
+        verticalLayoutWidget->setGeometry(QRect(180, 110, 131, 221));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -209,7 +210,7 @@ public:
 
         verticalLayoutWidget_2 = new QWidget(currencyConverter);
         verticalLayoutWidget_2->setObjectName("verticalLayoutWidget_2");
-        verticalLayoutWidget_2->setGeometry(QRect(220, 110, 131, 221));
+        verticalLayoutWidget_2->setGeometry(QRect(350, 110, 131, 221));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -223,6 +224,9 @@ public:
 
         verticalLayout_2->addWidget(toCurrencyComboBox);
 
+        swapCurrenciesButton = new QPushButton(currencyConverter);
+        swapCurrenciesButton->setObjectName("swapCurrenciesButton");
+        swapCurrenciesButton->setGeometry(QRect(490, 210, 31, 31));
         tabWidget->addTab(currencyConverter, QString());
         toDoList = new QWidget();
         toDoList->setObjectName("toDoList");
@@ -328,7 +332,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -338,6 +342,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         convertButton->setText(QCoreApplication::translate("MainWindow", "Convert", nullptr));
+        swapCurrenciesButton->setText(QCoreApplication::translate("MainWindow", "\342\207\204", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(currencyConverter), QCoreApplication::translate("MainWindow", "Currency Converter", nullptr));
         addTaskButton->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
         removeTaskButton->setText(QCoreApplication::translate("MainWindow", "Remove", nullptr));

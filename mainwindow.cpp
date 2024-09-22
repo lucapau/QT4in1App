@@ -72,6 +72,20 @@ void MainWindow::on_convertButton_clicked() {
     currencyConverter->convert(fromCurrency, toCurrency, amount);
 }
 
+void MainWindow::on_swapCurrenciesButton_clicked()
+{
+    int fromIndex = ui->fromCurrencyComboBox->currentIndex();
+    int toIndex = ui->toCurrencyComboBox->currentIndex();
+
+    ui->fromCurrencyComboBox->setCurrentIndex(toIndex);
+    ui->toCurrencyComboBox->setCurrentIndex(fromIndex);
+
+    if (!ui->amountLineEdit->text().isEmpty()) {
+        on_convertButton_clicked();
+    }
+
+}
+
 
 void MainWindow::on_removeTaskButton_clicked() {
     QListWidgetItem *item = ui->taskListWidget->currentItem();
