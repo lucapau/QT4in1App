@@ -22,12 +22,12 @@ jobs:
 
     - name: Configure Qt Project
       run: |
-        call "C:\Qt\6.7.1\mingw_64\bin\qtenv2.bat"  # Set up Qt environment with MinGW
+        & "C:\Qt\6.7.1\mingw_64\bin\qtenv2.bat"  # Set up Qt environment with MinGW
         qmake QT4in1.pro  # Configure your project with the .pro file
 
     - name: Build Qt Project
       run: |
-        call "C:\Qt\6.7.1\mingw_64\bin\qtenv2.bat"  # Set up Qt environment again before building
+        & "C:\Qt\6.7.1\mingw_64\bin\qtenv2.bat"  # Set up Qt environment again before building
         mingw64-make  # Build the project using MinGW
 
     - name: Package Windows .exe file
