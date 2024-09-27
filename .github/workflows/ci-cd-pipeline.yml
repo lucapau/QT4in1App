@@ -34,18 +34,18 @@ jobs:
         
     - name: Build
       run: |
-        mkdir build
-        cd build
+        mkdir release
+        cd release
         qmake ..\QT4in1.pro CONFIG+=debug
         nmake
         
     - name: Package application
       run: |
-        cd build\debug
+        cd release\debug
         windeployqt QT4in1.exe
         
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
         name: windows-build
-        path: build\debug\QT4in1.exe
+        path: release\QT4in1.exe
