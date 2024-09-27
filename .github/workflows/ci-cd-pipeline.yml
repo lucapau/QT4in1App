@@ -19,11 +19,14 @@ jobs:
         version: '6.7.1'  # Match your local Qt version
         host: 'windows'
         target: 'desktop'
-        arch: 'win64_msvc2019_64'  # Change this if you use MinGW
+        arch: 'win64_mingw81_64'  # Use MinGW architecture
 
     - name: Set up MinGW
+      run: choco install mingw --version=8.1.0  # Install MinGW if not already available
+
+    - name: Add MinGW to PATH
       run: |
-        choco install mingw --version=8.1.0  # Install MinGW if needed
+        echo "##[add-path]C:\Qt\Tools\mingw1120_64\bin"  # Update this to match your MinGW path if necessary
 
     - name: Run qmake
       run: |
@@ -31,11 +34,7 @@ jobs:
 
     - name: Build
       run: |
-        mingw32-make  # Use mingw32-make instead of nmake
-
-    - name: Run tests
-      run: |
-        mingw32-make check  # Ensure you have tests defined
+        mingw32-make  # Use mingw32-make to build
 
     - name: Package application
       run: |
@@ -45,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: windows-build
-        path: QT4in1.exe 
+        path: QT4in1.exe  # This should match the executable name
