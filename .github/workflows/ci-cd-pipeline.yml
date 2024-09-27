@@ -11,37 +11,38 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
-        version: '6.2.4'
+        version: '6.7.1'  # Match your local Qt version
         host: 'windows'
         target: 'desktop'
-        arch: 'win64_msvc2019_64'
+        arch: 'win64_msvc2019_64'  # Change this if you use MinGW
 
-    - name: Set up MSVC
-      uses: ilammy/msvc-dev-cmd@v1
+    - name: Set up MinGW
+      run: |
+        choco install mingw --version=8.1.0  # Install MinGW if needed
 
     - name: Run qmake
       run: |
-        qmake
-      
+        qmake QT4in1.pro  # Pointing to your .pro file in the root
+
     - name: Build
       run: |
-        nmake
+        mingw32-make  # Use mingw32-make instead of nmake
 
     - name: Run tests
       run: |
-        nmake check
+        mingw32-make check  # Ensure you have tests defined
 
     - name: Package application
       run: |
-        windeployqt ./${{ github.event.repository.name }}.exe
+        windeployqt QT4in1.exe  # Ensure the correct path to your executable
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: windows-build
-        path: ./${{ github.event.repository.name }}.exe
+        path: QT4in1.exe 
