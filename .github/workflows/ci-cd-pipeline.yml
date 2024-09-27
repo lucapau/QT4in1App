@@ -23,7 +23,7 @@ jobs:
           
       - name: Configure Qt Project
         run: |
-          qmake your_project.pro
+          qmake QT4in1.pro
           make
 
       - name: Run Unit Tests
