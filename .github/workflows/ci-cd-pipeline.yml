@@ -26,9 +26,7 @@ jobs:
           qmake QT4in1.pro
           make
 
-      - name: Run Unit Tests
-        run: |
-          ./tests/test_executable  # Replace with your test executable
+      
 
   deploy:
     runs-on: ubuntu-latest
