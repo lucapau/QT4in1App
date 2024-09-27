@@ -35,6 +35,7 @@ private slots:
     void on_viewPasswordsButton_clicked();
     void refreshPasswordTable(bool showPasswords = false);
     void on_swapCurrenciesButton_clicked();
+    void on_addCurrencyButton_clicked();
 
 private:
     Ui::MainWindow *ui;

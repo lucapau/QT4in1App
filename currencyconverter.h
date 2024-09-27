@@ -15,6 +15,7 @@ public:
     CurrencyConverter(QObject *parent = nullptr);
     void convert(const QString &fromCurrency, const QString &toCurrency, double amount);
     void updateRates(const QMap<QString, double> &newRates);
+    QMap<QString, double> exchangeRates;
 
 
 signals:
@@ -26,7 +27,7 @@ private slots:
 
 private:
     QNetworkAccessManager *networkManager;
-    QMap<QString, double> exchangeRates;
+
     void fetchExchangeRates();
 };
 

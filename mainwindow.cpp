@@ -55,6 +55,8 @@ void MainWindow::setupConnections() {
     });
 
 
+
+
 }
 
 void MainWindow::on_getWeatherButton_clicked() {
@@ -85,6 +87,33 @@ void MainWindow::on_swapCurrenciesButton_clicked()
     }
 
 }
+
+void MainWindow::on_addCurrencyButton_clicked() {
+    QString newCurrencyCode = ui->newCurrencyCodeLineEdit->text().toUpper();  // Ensure it's uppercase
+    double newCurrencyRate = ui->newCurrencyRateLineEdit->text().toDouble();
+
+    if (!newCurrencyCode.isEmpty() && newCurrencyRate > 0) {
+        if (!currencyConverter->exchangeRates.contains(newCurrencyCode)) {
+            // Add the new currency and its rate
+            currencyConverter->exchangeRates[newCurrencyCode] = newCurrencyRate;
+
+            // Add the new currency to the combo boxes
+            ui->fromCurrencyComboBox->addItem(newCurrencyCode);
+            ui->toCurrencyComboBox->addItem(newCurrencyCode);
+
+            QMessageBox::information(this, "Success", "New currency added successfully!");
+        } else {
+            QMessageBox::warning(this, "Error", "Currency code already exists.");
+        }
+    } else {
+        QMessageBox::warning(this, "Input Error", "Please enter a valid currency code and rate.");
+    }
+
+    // Clear input fields after adding
+    ui->newCurrencyCodeLineEdit->clear();
+    ui->newCurrencyRateLineEdit->clear();
+}
+
 
 
 void MainWindow::on_removeTaskButton_clicked() {

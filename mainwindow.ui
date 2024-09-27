@@ -201,6 +201,37 @@ QPushButton:selected {
        <string>⇄</string>
       </property>
      </widget>
+     <widget class="QWidget" name="formLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>120</y>
+        <width>160</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QLineEdit" name="newCurrencyCodeLineEdit"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="newCurrencyRateLineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="addCurrencyButton">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>330</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add Currency</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="toDoList">
      <attribute name="title">

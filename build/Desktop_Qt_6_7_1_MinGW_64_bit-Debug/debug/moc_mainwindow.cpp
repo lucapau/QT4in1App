@@ -57,7 +57,8 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "on_viewPasswordsButton_clicked",
     "refreshPasswordTable",
     "showPasswords",
-    "on_swapCurrenciesButton_clicked"
+    "on_swapCurrenciesButton_clicked",
+    "on_addCurrencyButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -70,7 +71,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -78,19 +79,20 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   92,    2, 0x08,    1 /* Private */,
-       3,    0,   93,    2, 0x08,    2 /* Private */,
-       4,    0,   94,    2, 0x08,    3 /* Private */,
-       5,    0,   95,    2, 0x08,    4 /* Private */,
-       6,    1,   96,    2, 0x08,    5 /* Private */,
-       9,    4,   99,    2, 0x08,    7 /* Private */,
-      14,    1,  108,    2, 0x08,   12 /* Private */,
-      16,    0,  111,    2, 0x08,   14 /* Private */,
-      17,    0,  112,    2, 0x08,   15 /* Private */,
-      18,    0,  113,    2, 0x08,   16 /* Private */,
-      19,    1,  114,    2, 0x08,   17 /* Private */,
-      19,    0,  117,    2, 0x28,   19 /* Private | MethodCloned */,
-      21,    0,  118,    2, 0x08,   20 /* Private */,
+       1,    0,   98,    2, 0x08,    1 /* Private */,
+       3,    0,   99,    2, 0x08,    2 /* Private */,
+       4,    0,  100,    2, 0x08,    3 /* Private */,
+       5,    0,  101,    2, 0x08,    4 /* Private */,
+       6,    1,  102,    2, 0x08,    5 /* Private */,
+       9,    4,  105,    2, 0x08,    7 /* Private */,
+      14,    1,  114,    2, 0x08,   12 /* Private */,
+      16,    0,  117,    2, 0x08,   14 /* Private */,
+      17,    0,  118,    2, 0x08,   15 /* Private */,
+      18,    0,  119,    2, 0x08,   16 /* Private */,
+      19,    1,  120,    2, 0x08,   17 /* Private */,
+      19,    0,  123,    2, 0x28,   19 /* Private | MethodCloned */,
+      21,    0,  124,    2, 0x08,   20 /* Private */,
+      22,    0,  125,    2, 0x08,   21 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -104,6 +106,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,   20,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -151,6 +154,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'refreshPasswordTable'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_swapCurrenciesButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_addCurrencyButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -175,6 +180,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 10: _t->refreshPasswordTable((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         case 11: _t->refreshPasswordTable(); break;
         case 12: _t->on_swapCurrenciesButton_clicked(); break;
+        case 13: _t->on_addCurrencyButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -210,13 +216,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     }
     return _id;
 }
