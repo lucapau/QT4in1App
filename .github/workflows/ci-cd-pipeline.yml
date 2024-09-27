@@ -19,22 +19,27 @@ jobs:
         version: '6.7.1'
         host: 'windows'
         target: 'desktop'
-        arch: 'win64_msvc2019_64'
+        arch: 'win64_mingw'
         
-    - name: Setup MSVC
-      uses: ilammy/msvc-dev-cmd@v1
-      
+    - name: Setup MinGW
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: x64
+        
     - name: Build
       run: |
-        qmake QT4in1.pro
-        nmake
+        mkdir build
+        cd build
+        qmake ../QT4in1.pro CONFIG+=debug
+        mingw32-make
         
     - name: Package application
       run: |
-        windeployqt release/QT4in1.exe
+        cd build/debug
+        windeployqt QT4in1.exe
         
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
         name: windows-build
-        path: release/QT4in1.exe
+        path: build/debug/QT4in1.exe
