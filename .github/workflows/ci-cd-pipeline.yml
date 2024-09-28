@@ -1,66 +1,32 @@
-name: Build Qt Application for Windows
+name: CI Build
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
 
 jobs:
   build:
     runs-on: windows-latest
-    
+
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3
-      with:
-        version: '6.7.2'
-        host: 'windows'
-        target: 'desktop'
-        arch: 'win64_msvc2019_64'
-        
-    - name: Setup MSVC
-      uses: ilammy/msvc-dev-cmd@v1
-      with:
-        arch: x64
-        
-    - name: Install Chocolatey
-      run: |
-        Set-ExecutionPolicy Bypass -Scope Process -Force; `
-        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
-        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install OpenSSL
-      run: |
-        choco install openssl -y
+      - name: Set up Qt
+        run: |
+          choco install qt --version=6.7.1 --params="'/InstallDir:C:\Qt'"
+          # You can adjust the install directory as needed
 
-    - name: Add OpenSSL to PATH
-      run: |
-        echo "C:\Program Files\OpenSSL-Win64\bin" | Out-File -Append -Encoding ASCII $env:GITHUB_PATH
+      - name: Build the application
+        run: |
+          mkdir build
+          cd build
+          "C:\Qt\Tools\mingw1120_64\bin\qmake.exe" ../QT4in1.pro
+          "C:\Qt\Tools\mingw1120_64\bin\mingw32-make.exe" -f Makefile.Debug -j12
 
-    - name: Build
-      env:
-        OPENSSL_ROOT_DIR: C:\Program Files\OpenSSL-Win64
-        OPENSSL_LIBRARIES: C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD
-        OPENSSL_CONF: C:\Program Files\OpenSSL-Win64\bin\openssl.cfg
-        OPENSSL_LIBS: "ssl.lib;crypto.lib"
-      run: |
-        mkdir release
-        cd release
-        qmake ..\QT4in1.pro CONFIG+=debug OPENSSL_LIBS="ssl.lib crypto.lib"
-        nmake
-
-    - name: Package application
-      run: |
-        cd release
-        windeployqt QT4in1.exe
-        
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: windows-build
-        path: |
-          release\QT4in1.exe
-          release\*.dll
+      - name: Run tests (if applicable)
+        run: |
+          # If you have tests, you can run them here
+          # .\your_test_executable.exe
