@@ -38,19 +38,20 @@ jobs:
 
     - name: Add OpenSSL to PATH
       run: |
-        echo "C:\\Program Files\\OpenSSL-Win64\\bin" | Out-File -Append -Encoding ASCII $env:GITHUB_PATH
+        echo "C:\Program Files\OpenSSL-Win64\bin" | Out-File -Append -Encoding ASCII $env:GITHUB_PATH
 
     - name: Build
       env:
         OPENSSL_ROOT_DIR: C:\Program Files\OpenSSL-Win64
         OPENSSL_LIBRARIES: C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD
         OPENSSL_CONF: C:\Program Files\OpenSSL-Win64\bin\openssl.cfg
+        OPENSSL_LIBS: "ssl.lib;crypto.lib"
       run: |
         mkdir release
         cd release
-        qmake ..\QT4in1.pro CONFIG+=debug
+        qmake ..\QT4in1.pro CONFIG+=debug OPENSSL_LIBS="ssl.lib crypto.lib"
         nmake
-        
+
     - name: Package application
       run: |
         cd release
