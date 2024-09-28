@@ -1,0 +1,7 @@
+{
+    "name": "qt4in1app",
+    "version-string": "0.1.0",
+    "dependencies": [
+      "openssl"
+    ]
+  }
