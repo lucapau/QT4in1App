@@ -36,9 +36,14 @@ jobs:
       run: |
         choco install openssl -y
 
+    - name: Add OpenSSL to PATH
+      run: |
+        echo "C:\Program Files\OpenSSL-Win64\bin" | Out-File -Append -Encoding ASCII $env:GITHUB_PATH
+
     - name: Build
       env:
         OPENSSL_ROOT_DIR: C:\Program Files\OpenSSL-Win64
+        OPENSSL_LIBRARIES: C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD
       run: |
         mkdir release
         cd release
