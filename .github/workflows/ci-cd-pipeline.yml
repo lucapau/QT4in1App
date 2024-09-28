@@ -33,19 +33,25 @@ jobs:
         echo "C:\Program Files\OpenSSL-Win64\bin" >> $GITHUB_PATH
         
     - name: Build
+      env:
+        OPENSSL_ROOT_DIR: C:\Program Files\OpenSSL-Win64
       run: |
         mkdir release
         cd release
-        qmake ..\QT4in1.pro CONFIG+=debug
+        qmake ..\QT4in1.pro CONFIG+=debug "INCLUDEPATH+=$env:OPENSSL_ROOT_DIR\include" "LIBS+=-L$env:OPENSSL_ROOT_DIR\lib -llibssl -llibcrypto"
         nmake
         
     - name: Package application
       run: |
-        cd release\debug
+        cd release
         windeployqt QT4in1.exe
+        copy "$env:OPENSSL_ROOT_DIR\bin\libssl-3-x64.dll" .
+        copy "$env:OPENSSL_ROOT_DIR\bin\libcrypto-3-x64.dll" .
         
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
         name: windows-build
-        path: release\QT4in1.exe
+        path: |
+          release\QT4in1.exe
+          release\*.dll
