@@ -19,7 +19,7 @@ jobs:
           mkdir C:\Qt
           cd C:\Qt
           curl -LO "https://download.qt.io/official_releases/qt/6.7/6.7.2/qt-unified-windows-x64-v6.7.2.exe"
-          & qt-unified-windows-x64-v6.7.2.exe --silent --install=C:\Qt --modules=qtbase,qtdeclarative,qttools,qtwidgets,qtcharts
+          & .\qt-unified-windows-x64-v6.7.2.exe --silent --install=C:\Qt --modules=qtbase,qtdeclarative,qttools,qtwidgets,qtcharts
           del qt-unified-windows-x64-v6.7.2.exe  # Clean up installer
 
       - name: Build the application
