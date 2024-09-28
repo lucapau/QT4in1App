@@ -14,10 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Qt
+      - name: Download and Install Qt
         run: |
-          choco install qt --version=6.7.2 --params="'/InstallDir:C:\Qt'"
-         
+          mkdir C:\Qt
+          cd C:\Qt
+          curl -LO "https://download.qt.io/official_releases/qt/6.7/6.7.2/qt-unified-windows-x64-v6.7.2.exe"
+          start /wait qt-unified-windows-x64-v6.7.2.exe --silent --install=C:\Qt --modules=qtbase,qtdeclarative,qttools,qtwidgets,qtcharts
+          del qt-unified-windows-x64-v6.7.2.exe  # Clean up installer
 
       - name: Build the application
         run: |
@@ -25,5 +28,3 @@ jobs:
           cd build
           "C:\Qt\Tools\mingw1120_64\bin\qmake.exe" ../QT4in1.pro
           "C:\Qt\Tools\mingw1120_64\bin\mingw32-make.exe" -f Makefile.Debug -j12
-
-      
