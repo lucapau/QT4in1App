@@ -16,8 +16,8 @@ jobs:
 
       - name: Set up Qt
         run: |
-          choco install qt --version=6.7.1 --params="'/InstallDir:C:\Qt'"
-          # You can adjust the install directory as needed
+          choco install qt --version=6.7.2 --params="'/InstallDir:C:\Qt'"
+         
 
       - name: Build the application
         run: |
