@@ -110,8 +110,8 @@ QTabWidget::pane {
      <widget class="QPushButton" name="convertButton">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>330</y>
+        <x>110</x>
+        <y>340</y>
         <width>80</width>
         <height>24</height>
        </rect>
@@ -155,7 +155,7 @@ QPushButton:selected {
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>90</x>
         <y>110</y>
         <width>131</width>
         <height>221</height>
@@ -173,7 +173,7 @@ QPushButton:selected {
      <widget class="QWidget" name="verticalLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>250</x>
         <y>110</y>
         <width>131</width>
         <height>221</height>
@@ -191,7 +191,7 @@ QPushButton:selected {
      <widget class="QPushButton" name="swapCurrenciesButton">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>380</x>
         <y>210</y>
         <width>31</width>
         <height>31</height>
@@ -201,35 +201,63 @@ QPushButton:selected {
        <string>⇄</string>
       </property>
      </widget>
-     <widget class="QWidget" name="formLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>120</y>
-        <width>160</width>
-        <height>211</height>
-       </rect>
-      </property>
-      <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0">
-        <widget class="QLineEdit" name="newCurrencyCodeLineEdit"/>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLineEdit" name="newCurrencyRateLineEdit"/>
-       </item>
-      </layout>
-     </widget>
      <widget class="QPushButton" name="addCurrencyButton">
       <property name="geometry">
        <rect>
-        <x>630</x>
-        <y>330</y>
+        <x>590</x>
+        <y>280</y>
         <width>80</width>
         <height>24</height>
        </rect>
       </property>
       <property name="text">
        <string>Add Currency</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>160</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Currency Name:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>220</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Rate based on USD:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="newCurrencyCodeLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>160</y>
+        <width>108</width>
+        <height>24</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="newCurrencyRateLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>220</y>
+        <width>108</width>
+        <height>24</height>
+       </rect>
       </property>
      </widget>
     </widget>

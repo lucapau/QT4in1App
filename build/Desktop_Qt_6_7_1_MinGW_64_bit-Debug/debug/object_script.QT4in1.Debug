@@ -4,7 +4,6 @@ debug/mainwindow.o
 debug/notetaking.o
 debug/passwordmanager.o
 debug/weatherforecast.o
-debug/qrc_resources.o
 debug/moc_currencyconverter.o
 debug/moc_mainwindow.o
 debug/moc_notetaking.o

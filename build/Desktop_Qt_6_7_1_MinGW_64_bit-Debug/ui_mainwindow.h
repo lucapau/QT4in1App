@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -44,11 +43,11 @@ public:
     QComboBox *fromCurrencyComboBox;
     QComboBox *toCurrencyComboBox;
     QPushButton *swapCurrenciesButton;
-    QWidget *formLayoutWidget;
-    QFormLayout *formLayout;
+    QPushButton *addCurrencyButton;
+    QLabel *label_2;
+    QLabel *label_3;
     QLineEdit *newCurrencyCodeLineEdit;
     QLineEdit *newCurrencyRateLineEdit;
-    QPushButton *addCurrencyButton;
     QWidget *toDoList;
     QListWidget *taskListWidget;
     QLineEdit *taskLineEdit;
@@ -167,7 +166,7 @@ public:
         currencyConverter->setObjectName("currencyConverter");
         convertButton = new QPushButton(currencyConverter);
         convertButton->setObjectName("convertButton");
-        convertButton->setGeometry(QRect(210, 330, 80, 24));
+        convertButton->setGeometry(QRect(110, 340, 80, 24));
         convertButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #d0d0d0;\n"
 "    color: white;\n"
@@ -200,7 +199,7 @@ public:
 ""));
         verticalLayoutWidget = new QWidget(currencyConverter);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(180, 110, 131, 221));
+        verticalLayoutWidget->setGeometry(QRect(90, 110, 131, 221));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -216,7 +215,7 @@ public:
 
         verticalLayoutWidget_2 = new QWidget(currencyConverter);
         verticalLayoutWidget_2->setObjectName("verticalLayoutWidget_2");
-        verticalLayoutWidget_2->setGeometry(QRect(350, 110, 131, 221));
+        verticalLayoutWidget_2->setGeometry(QRect(250, 110, 131, 221));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -232,26 +231,22 @@ public:
 
         swapCurrenciesButton = new QPushButton(currencyConverter);
         swapCurrenciesButton->setObjectName("swapCurrenciesButton");
-        swapCurrenciesButton->setGeometry(QRect(490, 210, 31, 31));
-        formLayoutWidget = new QWidget(currencyConverter);
-        formLayoutWidget->setObjectName("formLayoutWidget");
-        formLayoutWidget->setGeometry(QRect(590, 120, 160, 211));
-        formLayout = new QFormLayout(formLayoutWidget);
-        formLayout->setObjectName("formLayout");
-        formLayout->setContentsMargins(0, 0, 0, 0);
-        newCurrencyCodeLineEdit = new QLineEdit(formLayoutWidget);
-        newCurrencyCodeLineEdit->setObjectName("newCurrencyCodeLineEdit");
-
-        formLayout->setWidget(0, QFormLayout::LabelRole, newCurrencyCodeLineEdit);
-
-        newCurrencyRateLineEdit = new QLineEdit(formLayoutWidget);
-        newCurrencyRateLineEdit->setObjectName("newCurrencyRateLineEdit");
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, newCurrencyRateLineEdit);
-
+        swapCurrenciesButton->setGeometry(QRect(380, 210, 31, 31));
         addCurrencyButton = new QPushButton(currencyConverter);
         addCurrencyButton->setObjectName("addCurrencyButton");
-        addCurrencyButton->setGeometry(QRect(630, 330, 80, 24));
+        addCurrencyButton->setGeometry(QRect(590, 280, 80, 24));
+        label_2 = new QLabel(currencyConverter);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(470, 160, 91, 16));
+        label_3 = new QLabel(currencyConverter);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(460, 220, 101, 16));
+        newCurrencyCodeLineEdit = new QLineEdit(currencyConverter);
+        newCurrencyCodeLineEdit->setObjectName("newCurrencyCodeLineEdit");
+        newCurrencyCodeLineEdit->setGeometry(QRect(580, 160, 108, 24));
+        newCurrencyRateLineEdit = new QLineEdit(currencyConverter);
+        newCurrencyRateLineEdit->setObjectName("newCurrencyRateLineEdit");
+        newCurrencyRateLineEdit->setGeometry(QRect(580, 220, 108, 24));
         tabWidget->addTab(currencyConverter, QString());
         toDoList = new QWidget();
         toDoList->setObjectName("toDoList");
@@ -369,6 +364,8 @@ public:
         convertButton->setText(QCoreApplication::translate("MainWindow", "Convert", nullptr));
         swapCurrenciesButton->setText(QCoreApplication::translate("MainWindow", "\342\207\204", nullptr));
         addCurrencyButton->setText(QCoreApplication::translate("MainWindow", "Add Currency", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Currency Name:", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Rate based on USD:", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(currencyConverter), QCoreApplication::translate("MainWindow", "Currency Converter", nullptr));
         addTaskButton->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
         removeTaskButton->setText(QCoreApplication::translate("MainWindow", "Remove", nullptr));

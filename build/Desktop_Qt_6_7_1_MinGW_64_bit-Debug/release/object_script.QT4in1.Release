@@ -4,7 +4,6 @@ release/mainwindow.o
 release/notetaking.o
 release/passwordmanager.o
 release/weatherforecast.o
-release/qrc_resources.o
 release/moc_currencyconverter.o
 release/moc_mainwindow.o
 release/moc_notetaking.o
