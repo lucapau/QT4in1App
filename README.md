@@ -16,7 +16,7 @@ This Qt application combines multiple useful tools into one cohesive app, showca
    - Easily convert between different currencies using live exchange rates.
    - Simple input and output fields for entering amounts and selecting currencies.
    
-   ![Currency Converter](currencyconverter.PNG)
+   ![Currency Converter](CurrencyConverter.PNG)
 
 2. **To-Do List**: 
    - Add tasks to a list with options to edit or delete them.
